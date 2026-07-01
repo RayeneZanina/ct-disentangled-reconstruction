@@ -46,7 +46,7 @@ $$y_i \sim Poisson(I_0 e^{(Ax)_i})$$
 
 In the simulated sinograms $y$, we also implement a gaussian noise for the electronic noise. It isn't taken into account into the model for the optimization problem though.
 
-We then use Maximum Likelihood Estimation to find $x$. We try to maximize $p(y|x)$. From the Poisson model, we know that $p(y_i | x) = \frac{(I_0 e^{(Ax)_i})^{y_i} e^{-I_0 e^{(Ax)_i}}}{y_i!}$. We then assume that all bins are independent, giving us $p(y|x) = \prod_i p(y_i|x)$. For this optimization problem, we try to minimize the log-likelihood
+We then use Maximum Likelihood Estimation to find $x$. We try to maximize $p(y|x)$. From the Poisson model, we know that $p(y_i | x) = \frac{(I_0 e^{(Ax)_i})^{y_i} e^{-I_0 e^{(Ax)_i}}}{y_i!}$. We then assume that all bins are independent, giving us $p(y|x) = \prod_i p(y_i|x)$. For this optimization problem, we try to minimize the negative log-likelihood
 
 $$-\log(p(y|x)) = -\sum_i y_i \log(I_0 e^{-(Ax)_i}) - I_0 e^{-(Ax)_i} - \log(y_i!) = \sum_i y_i (Ax)_i + I_0 e^{-(Ax)_i} - y_i \log(I_0) + \log(y_i!)$$
 
